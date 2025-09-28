@@ -2,8 +2,6 @@
 
 int main()
 {
-    Bureaucrat obj;
-
-    ojb();
+    Bureaucrat obj("Alx", 21);
     return 0;
 }
