@@ -16,14 +16,19 @@ Bureaucrat::Bureaucrat(const char* name, int grade) : _name(name)
 	std::cout << getName() << ", bureaucrat grade" << getGrade() << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade){}
+
+
 const char* Bureaucrat::GradeTooHighException()::what() const throw()
 {
 	return("Grade to High");
 }
+
 const char* Bureaucrat::GradeTooLowException()::what() const throw()
 {
 	return("Grade to High");
 }
+
 void Bureaucrat::increment()
 {
 	if (this->_grade <= 1)
@@ -31,6 +36,7 @@ void Bureaucrat::increment()
 	else 
 		this->_grade--;
 }
+
 void Bureaucrat::decrement()
 {
 	if (this->_grade >= 150)
@@ -38,7 +44,7 @@ void Bureaucrat::decrement()
 	else 
 		this->_grade++;
 }
-// getter :
+
 const int Bureaucrat::getGrade()
 {
 	return(this->_grade);
@@ -51,17 +57,9 @@ const std::string Bureaucrat::getName()
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Doconstructor" << std::endl;
+	std::cout << "Destructor" << std::endl;
 }
 
-
-// copy constructor
-Bureaucrat::Bureaucrat(const &Bureaucrat other) : _name(other._name), _grade(other._grade){}
-
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return nullptr;
-}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other) {
