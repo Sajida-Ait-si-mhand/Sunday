@@ -2,17 +2,21 @@
 
 Bureaucrat::Bureaucrat()
 {
+	this->_name = "Default";
 	this->_grade = 1;
 }
-
-void Bureaucrat::GradeTooHighException()
+Bureaucrat::Bureaucrat(const char* name, int grade) : _name(name)
 {
-	std::cout << "Grade to High" << std::endl;
+
+}
+const char* Bureaucrat::GradeTooHighException()::what() const throw()
+{
+	return("Grade to High");
 }
 
-void Bureaucrat::GradeTooLowException()
+const char* Bureaucrat::GradeTooLowException()::what() const throw()
 {
-	std::cout << "Grade to Low" << std::endl;
+	return("Grade to High");
 }
 void Bureaucrat::increment()
 {
