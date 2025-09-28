@@ -1,6 +1,7 @@
 #pragma once 
 #include <string>
 #include <iostream>
+#incldue <exception>
 
 class Bureaucrat
 {
@@ -11,7 +12,8 @@ class Bureaucrat
 	public:
 		Bureaucrat();
 		Bureaucrat(const char *name, int grade);
-		//getName() and getGrade()
+		Bureaucrat(const &Bureaucrat other);
+		Bureaucrat& operator=(const Bureaucrat& other);
 		class GradeTooHighException : public std::exception 
 		{
 			public:
@@ -24,7 +26,12 @@ class Bureaucrat
 		}
 		void increment();
 		void decrement();
+		//
+
+		const std::string getName();
+		const int getGrade();
+
 		~Bureaucrat();
-		
 };
 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
