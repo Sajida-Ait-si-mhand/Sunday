@@ -13,7 +13,7 @@ Bureaucrat::Bureaucrat(const char* name, int grade) : _name(name)
 	else if (grade < 1)
 		throw GradeTooHighException();
 	_grade = grade;
-	std::cout << getName() << ", bureaucrat grade " << getGrade() << std::endl;
+	std::cout << getName() << ", bureaucrat grade" << getGrade() << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade){}
@@ -26,7 +26,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return("Grade to High");
+	return("Grade to Low");
 }
 
 void Bureaucrat::increment()
@@ -57,7 +57,7 @@ const std::string &Bureaucrat::getName() const
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Finisyonaaaaa" << std::endl;
+	std::cout << "Fin" << std::endl;
 }
 
 
