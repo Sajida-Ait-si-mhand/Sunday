@@ -1,7 +1,7 @@
 #pragma once 
 #include <string>
 #include <iostream>
-#incldue <exception>
+#include <exception>
 
 class Bureaucrat
 {
