@@ -1,9 +1,12 @@
 #include "Form.hpp"
 
 
-Form::Form()
+Form::Form(const std::string& name, int gradeSign, int gradeRequire) : _name(name), _is_signed(false), _grade_sign(gradeSign), _grade_require(gradeRequire)
 {
-    // this->_name = name;
+    if (gradeSign < 1 || gradeRequire < 1)
+        throw GradeTooHighException();
+    if (gradeSign > 150 || gradeRequire > 150)
+        throw GradeTooLowException();
 }
 
 const char* Form::GradeTooHighException::what() const throw()

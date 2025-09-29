@@ -1,8 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-Bureaucrat::Bureaucrat() 
+Bureaucrat::Bureaucrat() : _name("Default")
 {
-	this->_name = "Default";
 	this->_grade = 150;
 }
 

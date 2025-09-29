@@ -11,7 +11,7 @@ class Form
         const int _grade_sign;
         const int _grade_require;
     public:
-        Form();
+        Form(const std::string& name, int gradeSign, int gradeRequire);
         class GradeTooHighException : public std::exception {
             const char* what() const throw();
         };
