@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-
+#include "Form.hpp"
 Bureaucrat::Bureaucrat() 
 {
 	this->_name = "Default";

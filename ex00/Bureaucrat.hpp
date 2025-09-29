@@ -3,6 +3,11 @@
 #include <iostream>
 #include <exception>
 
+class Form;
+
+
+
+
 class Bureaucrat
 {
 	private:
