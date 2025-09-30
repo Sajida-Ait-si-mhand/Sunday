@@ -1,7 +1,7 @@
-NAME = Form
+NAME = AForm
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp
 OFILES = $(SRCS:.cpp=.o)
 
 all : $(NAME)

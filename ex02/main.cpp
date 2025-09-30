@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 int main()
@@ -110,8 +110,8 @@ int main()
         Bureaucrat b1("b1", 1);
         Bureaucrat b2("b1", 1);
 
-        Form f2("b2", 12, 12);
-        Form f1("sjd", 1, 150);
+        AForm f2("b2", 12, 12);
+        AForm f1("sjd", 1, 150);
         // b1.signForm(f1);
         b2.signForm(f2);
         
