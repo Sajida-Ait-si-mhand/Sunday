@@ -23,7 +23,7 @@ class Form
         const bool& getIsSigned() const;
         const int& getGradeSign() const;
         const int& getGradeRequire() const;
-
+        // = operator 
         void BeSigned(const Bureaucrat& bureaucrat);
         ~Form();
 };
