@@ -1,6 +1,6 @@
 #pragma once 
 #include <iostream>
-#include <stdexcept>
+#include <exeception>
 #include "Bureaucrat.hpp"
 
 class Form
@@ -19,16 +19,24 @@ class Form
         class GradeTooLowException : public std::exception {
             const char* what() const throw();
         };
+        class NotSignedException : public std::exception {
+            const char* what() const throw();
+        }
         // getters:
         const std::string& getName() const;
         const bool& getIsSigned() const;
         const int& getGradeSign() const;
         const int& getGradeRequire() const;
         const std::string &getTarget() const;
+
         Form& operator=(const Form& other);
         void BeSigned(const Bureaucrat& bureaucrat);
+
+        // pure
         virtual void execute(Bureaucrat const & executor) const = 0;
         ~Form();
+    protected:
+        void checkExecutionRequirements(const Bureaucrat& executor) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& form);

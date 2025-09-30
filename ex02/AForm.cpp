@@ -20,6 +20,12 @@ const char* Form::GradeTooLowException::what() const throw()
     return ("Form Too Low");
 }
 
+const char *Form::NotSignedException::what() const throw()
+{
+    return ("Nothing Signed In");
+}
+
+
 const std::string& Form::getName() const {
     return(this->_name);
 }
@@ -51,6 +57,19 @@ const std::string &Form::getTarget() const
 {
     // TODO: insert return statement here
 }
+// protected 
+
+void Form::checkExecutionRequirements(const Bureaucrat& executor) const
+{
+    if (!this->_is_signed)
+    {
+        throw NotSignedException();
+    }
+    if(executor.getGrade() > _grade_require)
+    {
+        throw GradeTooLowException();
+    }
+}
 
 Form::~Form()
 {
@@ -73,3 +92,4 @@ Form &Form::operator=(const Form &other)
     }
     return (*this);
 }
+
