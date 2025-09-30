@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "AForm.hpp"
 
 
 Form::Form(const std::string& name, int gradeSign, int gradeRequire) : _name(name), _is_signed(false), _grade_sign(gradeSign), _grade_require(gradeRequire)
@@ -44,6 +45,11 @@ void Form::BeSigned(const Bureaucrat& bureaucrat)
         this->_is_signed = true;
     else
         throw GradeTooLowException();
+}
+
+const std::string &Form::getTarget() const
+{
+    // TODO: insert return statement here
 }
 
 Form::~Form()
