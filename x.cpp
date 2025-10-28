@@ -1,19 +1,29 @@
-#include <iostream>
 
-int main()
+#include <iostream>
+#include <exception>
+
+class Myexception : public std::exception
 {
-	try{
-		int age = 18;
-		if (age <= 11)
-		{
-			std::cout << "Mineur" << age << std::endl;
-		}
-		else {
-			throw(age);
-		}
-	}
-	catch (int age)
-	{
-		std::cout << "Majeur" << age << std::endl ;
-	}
+private:
+    std::string message;
+public:
+    explicit Myexception(const std::string &msg) : message(msg) {};
+    const char* what() const throw()
+    {
+        return message.c_str();
+    }
+    virtual ~Myexception() throw(){}
+};
+
+
+
+int main() {
+    try{
+        throw Myexception("ERROR 404:(");
+    }
+    catch(const Myexception& e)
+    {
+        std::cout << "This is the exception:" << e.what() << std::endl;
+    }
+    return 0;
 }
