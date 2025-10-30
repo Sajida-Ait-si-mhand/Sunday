@@ -1,7 +1,7 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
-
-AForm::AForm(const std::string& name, int gradeSign, int gradeRequire) : _name(name), _is_signed(false), _grade_sign(gradeSign), _grade_require(gradeRequire)
+AForm::AForm(const std::string& name, int gradeSign, int gradeRequire, const std::string& target) : _name(name), _is_signed(false), _grade_sign(gradeSign), _grade_require(gradeRequire), _target(target)
 {
     if (gradeSign < 1 || gradeRequire < 1)
         throw GradeTooHighException();
@@ -24,39 +24,27 @@ const char *AForm::NotSignedException::what() const throw()
     return ("AForm Not Signed");
 }
 
-
-const std::string& AForm::getName() const {
-    return(this->_name);
+const char *AForm::AlreadySignedException::what() const throw()
+{
+    return ("AForm Already Signed");
 }
 
-const bool& AForm::getIsSigned() const 
-{
-    return(this->_is_signed);
-}
+const std::string& AForm::getName() const { return this->_name; }
+bool AForm::getIsSigned() const { return this->_is_signed; }
+int AForm::getGradeSign() const { return this->_grade_sign; }
+int AForm::getGradeRequire() const { return this->_grade_require; }
 
-const int& AForm::getGradeSign() const
+void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
-    return (this->_grade_sign);
-}   
-
-const int& AForm::getGradeRequire() const
-{
-    return (this->_grade_require);
-}
-
-void AForm::BeSigned(const Bureaucrat& bureaucrat)
-{
+    if (this->_is_signed)
+        throw AlreadySignedException();
     if (bureaucrat.getGrade() <= this->_grade_sign)
         this->_is_signed = true;
     else
         throw GradeTooLowException();
 }
 
-const std::string &AForm::getTarget() const
-{
-    return (this->_target);
-}
-// protected 
+const std::string &AForm::getTarget() const { return this->_target; }
 
 void AForm::checkExecutionRequirements(const Bureaucrat& executor) const
 {
@@ -70,19 +58,24 @@ void AForm::checkExecutionRequirements(const Bureaucrat& executor) const
     }
 }
 
-AForm::~AForm()
+void AForm::execute(Bureaucrat const & executor) const
+{
+    checkExecutionRequirements(executor);
+    this->executeAction();
+}
+
+AForm::~AForm() throw()
 {
     std::cout << "AForm Destructor Called" << std::endl;
 }
 
-// for << operator overload
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
     os << "Form Name: " << form.getName() << ", Is Signed: " << form.getIsSigned()
        << ", Grade Required to Sign: " << form.getGradeSign()
        << ", Grade Required to Execute: " << form.getGradeRequire();
     return os;
 }
-// assignment operator
+
 AForm &AForm::operator=(const AForm &other)
 {
     if(this != &other)

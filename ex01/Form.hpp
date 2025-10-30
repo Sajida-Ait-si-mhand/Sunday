@@ -18,6 +18,10 @@ class Form
         class GradeTooLowException : public std::exception {
             const char* what() const throw();
         };
+        class AlreadySignedException : public std::exception {
+            public:
+                const char* what() const throw();
+        };
         // getters:
         const std::string& getName() const;
         const bool& getIsSigned() const;

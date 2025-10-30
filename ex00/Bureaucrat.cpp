@@ -1,9 +1,7 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() 
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
-	this->_name = "Default";
-	this->_grade = 150;
 }
 
 Bureaucrat::Bureaucrat(const char* name, int grade) : _name(name)
@@ -32,16 +30,16 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 void Bureaucrat::increment()
 {
 	if (this->_grade <= 1)
-		GradeTooHighException();
-	else 
+		throw GradeTooHighException();
+	else
 		this->_grade--;
 }
 
 void Bureaucrat::decrement()
 {
 	if (this->_grade >= 150)
-		GradeTooLowException();
-	else 
+		throw GradeTooLowException();
+	else
 		this->_grade++;
 }
 

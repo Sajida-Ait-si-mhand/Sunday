@@ -2,33 +2,6 @@
 
 int main()
 {
-    // try
-    // {
-    //     Bureaucrat obj("Alx", 21);
-    //     std::cout << obj << std::endl;
-    // }
-    // catch (std::exception &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }   
-    // try
-    // {
-    //     Bureaucrat obj("Juan", 0);
-    //     std::cout << obj << std::endl;
-    // }
-    // catch (std::exception &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }   
-    // try
-    // {
-    //     Bureaucrat obj("Juan", 1);
-    //     std::cout << obj << std::endl;
-    // }
-    // catch (std::exception &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }   
     try
     {
         Bureaucrat obj("Abir", 151);
@@ -47,5 +20,13 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }  
+    try{
+        Bureaucrat ayoub("Lucifer", 1);
+        std::cout << ayoub << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     return 0;
 }

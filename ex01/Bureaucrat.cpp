@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+
 Bureaucrat::Bureaucrat() : _name("Default")
 {
 	this->_grade = 150;

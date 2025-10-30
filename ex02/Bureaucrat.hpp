@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <exception>
+#include <fstream>
+#include <stdexcept>
 
 class AForm;
 
@@ -30,6 +32,7 @@ class Bureaucrat
 		void decrement();
 		//
 		void signForm(AForm& form);
+		void executeForm(AForm const & form);
 		// 
 
 		const std::string& getName() const;

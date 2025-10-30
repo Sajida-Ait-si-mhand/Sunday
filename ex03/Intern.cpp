@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 
-// Creator helper functions (C++98-friendly)
 static AForm* createShrubbery(const std::string& target) {
     return new ShrubberyCreationForm(target);
 }
@@ -39,5 +38,5 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
     }
 
     std::cout << "Intern could not find the form: " << formName << std::endl;
-    return NULL; // caller should check for nullptr
+    return NULL;
 }

@@ -1,126 +1,33 @@
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include <iostream>
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
-int main()
-{
-//    try {
-//     Bureaucrat high("High", 0);
-//    }catch (std::exception &e){
-//         std::cout << "Nop: " << e.what() << std::endl;
-//    }
+int main() {
+    try {
+        Bureaucrat alice("Alice", 1); 
 
-//     // Test Bureaucrat grade too high
-//     try {
-//         Bureaucrat errorHigh("ErrorHigh", 0);
-//     } catch (std::exception &e) {
-//         std::cout << "Exception (too high): " << e.what() << std::endl;
-//     }
+        ShrubberyCreationForm shrubForm("home");
+        RobotomyRequestForm robotForm("Bender");
+        PresidentialPardonForm pardonForm("Marvin");
 
-//     // Test Bureaucrat grade too low
-//     try {
-//         Bureaucrat errorLow("ErrorLow", 151);
-//     } catch (std::exception &e) {
-//         std::cout << "Exception (too low): " << e.what() << std::endl;
-    // }
-    // try {
-    //     Bureaucrat Form1("sajda", 1);
-    // }catch(std::exception &e)
-    // {
-    //     std::cout << "Sjda" << e.what()<< std::endl;
-    // }
-    // // Test Form grade boundaries
-    // try {
-    //     Form f1("Form1", 1, 1);
-    //     std::cout << f1 << std::endl;
-    // } catch (std::exception &e) {
-    //     std::cout << "Form boundary test failed: " << e.what() << std::endl;
-    // }
+        shrubForm.beSigned(alice);
+        robotForm.beSigned(alice);
+        pardonForm.beSigned(alice);
 
-    // try {
-    //     Form f1("Form2", 1, 150);
-    //     std::cout << f1 << std::endl;
-    // } catch (std::exception &e) {
-    //     std::cout << "Form boundary test failed: " << e.what() << std::endl;
-    // }
-    // Test Form grade too high
-    // try {
-    //     Form f2("sajida", 0, 10);
-    // } catch (std::exception &e) {
-    //     std::cout << "Form Exception (grade too high): " << e.what() << std::endl;
-    // }
+        std::cout << "Executing ShrubberyCreationForm:" << std::endl;
+        shrubForm.execute(alice);  
 
-    // // Test Form grade too low
-    // try {
-    //     Form f3("Form3", 10, 151);
-    // } catch (std::exception &e) {
-    //     std::cout << "Form Exception (grade too low): " << e.what() << std::endl;
-    // }
+        std::cout << "\nExecuting RobotomyRequestForm (5 attempts):" << std::endl;
+        for (int i = 0; i < 5; i++)
+            robotForm.execute(alice);  
 
-    // // Test successful signing
-    // try {
-    //     Bureaucrat bob("Bob", 5);
-    //     Form f4("Form4", 10, 10);
-    //     bob.signForm(f4); // Should succeed
-    //     std::cout << f4 << std::endl;
-    // } catch (std::exception &e) {
-    //     std::cout << "Sign test failed: " << e.what() << std::endl;
-    // }
+        std::cout << "\nExecuting PresidentialPardonForm:" << std::endl;
+        pardonForm.execute(alice);  
 
-    // // Test failed signing (grade too low)
-    // try {
-    //     Bureaucrat alice("Alice", 50);
-    //     Form f5("Form5", 10, 10);
-    //     alice.signForm(f5); // Should fail
-    //     std::cout << f5 << std::endl;
-    // } catch (std::exception &e) {
-    //     std::cout << "Sign test failed: " << e.what() << std::endl;
-    // }
-
-    // // Test increment/decrement
-    // try {
-    //     Bureaucrat max("Max", 2);
-    //     max.increment(); // Should succeed (becomes 1)
-    //     std::cout << max << std::endl;
-    //     max.increment(); // Should throw (already at 1)
-    // } catch (std::exception &e) {
-    //     std::cout << "Increment test exception: " << e.what() << std::endl;
-    // }
-
-    // try {
-    //     Bureaucrat min("Min", 149);
-    //     min.decrement(); // Should succeed (becomes 150)
-    //     std::cout << min << std::endl;
-    //     min.decrement(); // Should throw (already at 150)
-    // } catch (std::exception &e) {
-    //     std::cout << "Decrement test exception: " << e.what() << std::endl;
-    // }
-
-    // // Try signing form that is already signed
-    // try {
-    //     Bureaucrat john("John", 1);
-    //     Form f6("Form6", 10, 10);
-    //     john.signForm(f6); // Should succeed
-    //     john.signForm(f6); // Should be already signed (depending on your logic, may print again)
-    // } catch (std::exception &e) {
-    //     std::cout << "Double sign test exception: " << e.what() << std::endl;
-    // }
-    try
-    {
-        Bureaucrat b1("b1", 1);
-        Bureaucrat b2("b1", 1);
-
-        AForm f2("b2", 12, 12);
-        AForm f1("sjd", 1, 150);
-        // b1.signForm(f1);
-        b2.signForm(f2);
-        
-        // std::cout << f1 << std::endl;
-        std::cout << f2 << std::endl;
-    } catch (std::exception &e)
-    {
-        std::cout << "Failed" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
     }
-    
     return 0;
 }

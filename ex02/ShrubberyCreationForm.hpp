@@ -1,11 +1,12 @@
-#pragma once 
-
+#pragma once
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
+#include <string>
 
-
-
-class ShrubberyCreationForm
-{
-    
+class ShrubberyCreationForm : public AForm {
+	public:
+		explicit ShrubberyCreationForm(const std::string& target);
+		ShrubberyCreationForm(const ShrubberyCreationForm& other);
+		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
+	virtual ~ShrubberyCreationForm() throw();
+	void executeAction() const;
 };
